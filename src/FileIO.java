@@ -22,15 +22,29 @@ public class FileIO {
         ContactsManager.continueChoosing();
     }
 
-    //insert formatPhoneNumber method
+    public static String formatPhoneNum(String aNum){
+        String areaCode = null;
+        String exchangeCode = null;
+        String subscriberNum = null;
+        if(aNum.length() == 10){
+            areaCode = "(" + aNum.substring(0,3) + ") ";
+            exchangeCode = aNum.substring(3,6) + "-";
+            subscriberNum = aNum.substring(6);
+        }else if(aNum.length() == 7){
+            areaCode = "(xxx) ";
+            exchangeCode = aNum.substring(0,3) + "-";
+            subscriberNum = aNum.substring(3);
+        }
+        return new StringBuilder().append(areaCode).append(exchangeCode).append(subscriberNum).toString();
+    }
 
     public static void addContact() throws IOException{
         Input entry = new Input();
         System.out.print("Enter your new contacts name: ");
         String name = entry.getString();
         ContactsManager.space();
-        System.out.print("Enter new contact's phone number: ");
-        String phoneNum = entry.getString();
+        System.out.print("Enter new contact's phone number:(numbers only, please) ");
+        String phoneNum = formatPhoneNum(entry.getString());
 
         Files.write(
                 dataFile,
