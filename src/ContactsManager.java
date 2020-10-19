@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ContactsManager {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         displayUi();
         /*ArrayList<Contact> firstGo = new ArrayList<>();
 
@@ -21,7 +21,7 @@ public class ContactsManager {
 */
     }
 
-    public static void displayUi() throws IOException{
+    public static void displayUi(){
         System.out.println("1. View contacts.");
         System.out.println("2. Add a new contact.");
         System.out.println("3. Search a contact by name.");
@@ -31,7 +31,7 @@ public class ContactsManager {
         usersChoice();
     }
 
-    public static void usersChoice() throws IOException{
+    public static void usersChoice(){
         Input selection = new Input();
         int choice = selection.getInt("Enter an option (1, 2, 3, 4 or 5): ");
         switch (choice){
@@ -57,7 +57,7 @@ public class ContactsManager {
         }
     }
 
-    public static void continueChoosing() throws IOException{
+    public static void continueChoosing(){
         space();
         System.out.print("Would you like to make another selection? ");
         Input choice = new Input();
@@ -66,6 +66,7 @@ public class ContactsManager {
             displayUi();
         }else {
             System.out.println("Take care!");
+            System.exit(0);
         }
     }
 
